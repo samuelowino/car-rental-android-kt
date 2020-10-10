@@ -10,5 +10,5 @@ data class Vehicle(
     val name: String,
     val price: Double,
     val availability: String,
-    val image: String
+    val imageId: Int
 )
