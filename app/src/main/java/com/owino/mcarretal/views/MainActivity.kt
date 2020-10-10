@@ -1,12 +1,9 @@
 package com.owino.mcarretal.views
 
-import android.app.Activity
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,11 +14,13 @@ import com.owino.mcarretal.views.viewmodel.VehiclesViewModel
 
 class MainActivity : AppCompatActivity() {
 
+    private val TAG = "MainActivity"
+
     val requestCode: Int = 1211
 
     lateinit var recyclerView: RecyclerView
     lateinit var adapter: VehiclesAdapter
-    lateinit var vehicles: List<Vehicle>
+    lateinit var vehicles: ArrayList<Vehicle>
 
     lateinit var layoutManager: LinearLayoutManager
     lateinit var viewModel: VehiclesViewModel
@@ -35,6 +34,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadData() {
+        val model = VehiclesViewModel(application)
+        model.getAll().observe(this, Observer<List<Vehicle>> { vehicles ->
+            Log.e(TAG, "loadData: vehicle " + vehicles)
+            this.vehicles.addAll(vehicles);
+        })
         adapter.notifyDataSetChanged()
     }
 
@@ -50,21 +54,5 @@ class MainActivity : AppCompatActivity() {
         viewModel.getAll().observe(this, Observer { vehicles ->
             vehicles?.let { adapter.setVehicles(it) }
         })
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == requestCode && resultCode == Activity.RESULT_OK) {
-            data?.getStringExtra(MainActivity.EXTRA_REPLY)?.let {
-                val vehicle = Vehicle(it)
-                viewModel.insert(vehicle)
-            }
-        } else {
-            Toast.makeText(
-                applicationContext,
-                R.string.empty_not_saved,
-                Toast.LENGTH_LONG).show()
-        }
     }
 }
