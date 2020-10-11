@@ -11,4 +11,10 @@ data class Vehicle(
     val price: Double,
     val availability: String,
     val imageId: Int
-)
+
+
+) {
+    override fun toString(): String {
+        return "Vehicle(id=$id, name='$name', price=$price, availability='$availability', imageId=$imageId)"
+    }
+}

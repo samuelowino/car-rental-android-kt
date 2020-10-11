@@ -61,11 +61,9 @@ public abstract class CarRentalDatabase : RoomDatabase() {
         }
 
         suspend fun populateDatabase(vehicleDao: VehiclesDao) {
-            vehicleDao.deleteAllVehicles()
-
             val car1 = Vehicle(1, "Benze CLA", 2.0, "available", R.drawable.benze_b);
-            val car2 = Vehicle(1, "Benze CM", 2.0, "available", R.drawable.benze_b);
-            val car3 = Vehicle(1, "Jeep", 2.0, "available", R.drawable.benze_b);
+            val car2 = Vehicle(2, "Benze CM", 2.0, "available", R.drawable.benze_b);
+            val car3 = Vehicle(3, "Jeep", 2.0, "available", R.drawable.benze_b);
 
             vehicleDao.insert(car1)
             vehicleDao.insert(car2)
