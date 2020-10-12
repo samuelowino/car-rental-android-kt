@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">mCarRetal</string>
     <string name="empty_not_saved">Empty not saved</string>
+    <string name="general_enter_your_details_below">Enter your details</string>
+    <string name="hint_first_name">First Name</string>
+    <string name="hint_last_name">Last Name</string>
+    <string name="general_phone_number">Phone Number</string>
+    <string name="general_password">Password</string>
+    <string name="general_sign_up_button">Sign up</string>
+    <string name="general_email_address">Email Address</string>
+    <string name="general_sign_in">Sign in</string>
 </resources>

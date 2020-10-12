@@ -9,12 +9,10 @@ import com.owino.mcarretal.views.fragments.SigninFragment
 
 class AuthenticationPagerAdapter : FragmentPagerAdapter {
 
-    val vehicles = ArrayList<Vehicle>();
-
     constructor(fragmentManager: FragmentManager) : super(fragmentManager);
 
     override fun getCount(): Int {
-        return vehicles.size;
+        return 2
     }
 
     override fun getItem(position: Int): Fragment {
