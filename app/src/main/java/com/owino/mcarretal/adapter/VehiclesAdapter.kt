@@ -24,6 +24,7 @@ class VehiclesAdapter internal constructor(
     private var vehicles = emptyList<Vehicle>()
     private var vehiclesFilterList = emptyList<Vehicle>();
     private var listener = listener;
+    private var context:Context = context;
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = inflater.inflate(R.layout.item_vehicle_layout, parent, false)
@@ -40,6 +41,8 @@ class VehiclesAdapter internal constructor(
                 current.price
             )
         )
+
+        holder.imageView.setImageDrawable(context.resources.getDrawable(current.imageId))
     }
 
     internal fun setVehicles(words: List<Vehicle>) {

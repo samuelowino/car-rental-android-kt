@@ -17,8 +17,8 @@ class AuthenticationPagerAdapter : FragmentPagerAdapter {
 
     override fun getItem(position: Int): Fragment {
         when(position){
-            0 -> return SigninFragment();
-            1 -> return RegisterFragment();
+            0 -> return RegisterFragment();
+            1 -> return SigninFragment();
             else -> {
                 return SigninFragment();
             }
